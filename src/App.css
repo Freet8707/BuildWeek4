@@ -6,13 +6,35 @@
   height: 40vmin;
   pointer-events: none;
 }
+.sizing{
+  margin:0;
+  padding:0;
+  height:25rem;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+html{
+min-height: 100vh;
+background-image:url('https://medcabinet4.netlify.app/images/bg.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}
+.chilled{
+  background-color:darkgreen;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align:center;
+}
+.Danger{
+  border-radius: 20px;
+  background-color: lightgreen;
+  color:black;
+  text-align:center;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
