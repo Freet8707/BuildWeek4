@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 export const POSTING_USER_CREDS = 'POSTING_USER_CREDS'
 export const USER_CREATE_SUCCESS = 'USER_CREATE_SUCCESS'
@@ -74,7 +75,7 @@ export const saveRecommend = (id) => dispatch => {
     // console.log(data)
     dispatch ({ type: SAVE_INITIALIZE })
 
-    axios.post(`https://lambda-med4-api.herokuapp.com/recommendations/${id}`, exampleData)
+    axiosWithAuth().post(`/recommendations/${id}`, exampleData)
     .then(res => {
         console.log(res.data)
         dispatch({ type: SAVE_RECOMMEND_SUCCESS, payload: res.data.message })
@@ -88,7 +89,7 @@ export const saveRecommend = (id) => dispatch => {
 export const getRecommends = (id) => dispatch => {
     dispatch({ type: GET_RECOMMEND_START })
     
-    axios.get(`https://lambda-med4-api.herokuapp.com/recommendations/${id}`)
+    axiosWithAuth().get(`/recommendations/${id}`)
     .then(res => {
         console.log(res.data)
         dispatch({ type: GET_RECOMMEND_SUCCESS, payload: res.data })
@@ -102,7 +103,7 @@ export const getRecommends = (id) => dispatch => {
 export const deleteRecommend = (id) => dispatch => {
     dispatch({ type: DELETE_RECOMMEND_START })
 
-    axios.delete(`https://lambda-med4-api.herokuapp.com/recommendations/${id}`)
+    axiosWithAuth().delete(`/recommendations/${id}`)
     .then(res => {
         console.log(res.data)
         dispatch({ type: DELETE_RECOMMEND_SUCCESS })

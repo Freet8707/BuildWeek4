@@ -15,6 +15,7 @@ const initialState = {
     recommendRetrieve: false,
     recommendSuccess: [],
     recommendError: '',
+    recommendId: 0,
     deleteStart: false,
     deleteSuccess: '',
     deleteError: ''
@@ -88,6 +89,7 @@ export const reducer = (state = initialState, action) => {
                 recommendRetrieve: false,
                 recommendSuccess: [],
                 recommendError: '',
+                recommendId: 0,
                 deleteStart: false,
                 deleteSuccess: '',
                 deleteError: ''
@@ -121,12 +123,14 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 recommendRetrieve: false,
                 recommendSuccess: action.payload,
+                recommendId: action.payload[0].id,
                 recommendError: ''
             }
         case GET_RECOMMEND_ERROR :
             return {
                 ...state,
                 recommendRetrieve: false,
+                recommendId: 0,
                 recommendError: action.payload,
                 recommendSuccess: []
             }

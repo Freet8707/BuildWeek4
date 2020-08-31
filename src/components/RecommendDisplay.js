@@ -54,7 +54,7 @@ const RecommendDisplay = (props) => {
                 <p><span>rating: </span> {data[0].rating}</p>
                 <button 
                     onClick={() => {
-                        props.deleteRecommend(data[0].id)}
+                        props.deleteRecommend(props.recommendId)}
                     }>
                     Delete Recommendation ?
                 </button>            
@@ -68,7 +68,8 @@ const mapStateToProps = state => {
     return {
         ...state,
         recommendRetrieve: state.recommendRetrieve,
-        recommendSuccess: state.recommendSuccess
+        recommendSuccess: state.recommendSuccess,
+        recommendId: state.recommendId
     }
 }
 

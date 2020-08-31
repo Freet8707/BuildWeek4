@@ -1,19 +1,12 @@
-import { connect } from 'react-redux'
 import axios from 'axios'
 
-const axiosWithAuth = (props) => {
+export const axiosWithAuth = (props) => {
+    const token = window.localStorage.getItem('token')
+    console.log('token inside of axios with auth...', token)
     return axios.create({
+        baseURL: 'https://lambda-med4-api.herokuapp.com',
         headers: {
-            authorization: props.token
+            Authorization: token
         }
     })
 }
-
-const mapStateToProps = state => {
-    return {
-        ...state,
-        token: state.token
-    }
-}
-
-export default connect(mapStateToProps, null)(axiosWithAuth)
